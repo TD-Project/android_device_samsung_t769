@@ -1,4 +1,4 @@
-# Copyright (C) 2012 The CyanogenMod Project 
+# Copyright (C) 2012 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,19 +25,22 @@
 # against the traditional rules of inheritance).
 USE_CAMERA_STUB := true
 
-# inherit from common celox 
--include device/samsung/celox-common/BoardConfigCommon.mk 
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/t769/bluetooth
+
+# inherit from common celox
+-include device/samsung/celox-common/BoardConfigCommon.mk
 
 # inherit from the proprietary version
 -include vendor/samsung/t769/BoardConfigVendor.mk
 
-TARGET_BOOTLOADER_BOARD_NAME := MSM8660_SURF
+TARGET_BOOTLOADER_BOARD_NAME := t769
+TARGET_NO_INITLOGO := false
 
-# Assert
 TARGET_OTA_ASSERT_DEVICE := SGH-T769,T769,sgh-t769,t769,Blaze4G,Blaze4g,blaze4G,blaze4g
 
 # Kernel
-TARGET_KERNEL_CONFIG        := cyanogenmod_t769_defconfig
+TARGET_KERNEL_CONFIG        := cyanogenmod_t769_alt_defconfig
 TARGET_KERNEL_SOURCE        := kernel/samsung/msm8660-common
 
 # cat /proc/emmc
@@ -61,5 +64,19 @@ BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
 
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/t769/bluetooth
+# Workaround for glitches while cropping bypass layers
+TARGET_NO_BYPASS_CROPPING := true
 
+# MTP
+BOARD_MTP_DEVICE := "/dev/mtp_usb"
+
+# QCOM hardware
+BOARD_USES_QCOM_HARDWARE := true
+TARGET_QCOM_AUDIO_VARIANT := caf
+TARGET_QCOM_DISPLAY_VARIANT := caf
+
+# Graphics
+USE_OPENGL_RENDERER := true
+TARGET_USES_C2D_COMPOSITION := true
+TARGET_USES_ION := true
+#BOARD_EGL_CFG := device/samsung/msm8660-common/configs/egl.cf
