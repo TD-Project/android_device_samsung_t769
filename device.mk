@@ -18,7 +18,7 @@
 $(call inherit-product-if-exists, vendor/samsung/t769/t769-vendor.mk)
 
 ## overlays
-DEVICE_PACKAGE_OVERLAYS += device/samsung/t769/overlay
+## veDEVICE_PACKAGE_OVERLAYS += device/samsung/t769/overlay
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
